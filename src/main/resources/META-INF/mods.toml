@@ -1,39 +1,48 @@
-# This is an example mods.toml file. It contains the data relating to the loading mods.
-# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
-# The overall format is standard TOML format, v0.5.0.
-# Note that there are a couple of TOML lists in this file.
-# Find more information on toml format here:  https://github.com/toml-lang/toml
-# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
-modLoader="javafml" #mandatory
-# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[35,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
-# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
-# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license="Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0)"
-# A URL to refer people to when problems occur with this mod
-issueTrackerURL="http://my.issue.tracker/" #optional
-# A list of mods - how many allowed here is determined by the individual mod loader
-[[mods]] #mandatory
-# The modid of the mod
-modId="immersivenuclearpower" #mandatory
-# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
-# see the associated build.gradle script for how to populate this completely automatically during a build
-version="${file.jarVersion}" #mandatory
- # A display name for the mod
-displayName="Immersive Nuclear Power" #mandatory
-# A URL to query for updates for this mod. See the JSON update specification <here>
-displayURL="http://example.com/" #optional
-# A text field displayed in the mod UI
-authors="BastouP" #optional
-# The description text for the mod (multi line!) (#mandatory)
-description='''
-This mods adds a nuclear reactors to Immersive Engineering.
-'''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.immersivenuclearpower]] #optional
+
+# Copyright 2020 BastouP.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+modLoader="javafml"
+loaderVersion="[35,)"
+license="Apache-2.0"
+issueTrackerURL="https://github.com/BastouP411/ImmersiveNuclearPower/issues"
+
+[[mods]]
+    modId="immersivenuclearpower"
+    version="${version}"
+    displayName="Immersive Nuclear Power"
+    displayURL="https://github.com/BastouP411/ImmersiveNuclearPower/"
+    authors="BastouP"
+    description="Adds a nuclear reactors to Immersive Engineering."
+
+[[dependencies.immersiveengineering]]
+    modId="forge"
+    mandatory=true
+    versionRange="[${forge_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.immersiveengineering]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[${mc_version}]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.immersivenuclearpower]]
     modId="immersiveengineering"
     mandatory=true
-    versionRange="[4.1.1,)"
+    versionRange="[1.16.4-4.1.1,)"
     ordering="NONE"
     side="BOTH"
